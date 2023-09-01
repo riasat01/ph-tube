@@ -10,17 +10,38 @@ const addCategory = (categories) => {
     categories.forEach(category => {
 
         const div = document.createElement('div');
-        div.innerHTML = `<button onClick="catBtnClicked(${category?.category_id})" class="btn rounded-sm category-btn">${category?.category}</button>`;
+        div.innerHTML = `<button onClick="btnClicked(${category?.category_id})" class="btn rounded-sm category-btn">${category?.category}</button>`;
         categoryContainer.appendChild(div);
     });
 }
 
-const catBtnClicked = async (id = 1000) => {
-    console.log(id);
+let currentCategory;
+
+const btnClicked = (id) =>{
+    catBtnClicked(false, id);
+    currentCategory = id;
+}
+
+const catBtnClicked = async (callFromSort = false, id = 1000) => {
+    // console.log(id);
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const cardsJson = await response.json();
     const cards = cardsJson.data;
-    // addCategory(data.data);
+    if (callFromSort === true) {
+        for (let k = 0; k < cards.length - 1; k++) {
+            for (let l = k + 1; l < cards.length; l++) {
+                if ((parseFloat(cards[k]?.others?.views.split('K')[0])) < parseFloat(cards[l]?.others?.views.split('K')[0])) {
+                    [cards[l], cards[k]] = [cards[k], cards[l]];
+                    console.log(`a = ${cards[k]?.others?.views.split('K')[0]}, b = ${cards[l]?.others?.views.split('K')[0]}`);
+                }
+            }
+        }
+        console.log(cards);
+    }
+    showCards(cards, id = 1000);
+}
+
+const showCards = (cards) => {
     const videoContainer = document.querySelector('#video-container');
     videoContainer.innerHTML = '';
     cards.forEach(data => {
@@ -41,11 +62,17 @@ const catBtnClicked = async (id = 1000) => {
                 <p>${data?.others?.views} views</p>
             </div>
         </div>
-        <p class="absolute top-40 right-3 text-white bg-black px-1 rounded-lg"><span>${(data?.others?.posted_date)?parseInt((data?.others?.posted_date)/3600):''}</span>${(data?.others?.posted_date)?'hrs ':''}<span>${(data?.others?.posted_date)?parseInt(((data?.others?.posted_date)%3600)/60):''}</span>${(data?.others?.posted_date)?' min ago':''}</p>`;
+        <p class="absolute top-40 right-3 text-white bg-black px-1 rounded-lg"><span>${(data?.others?.posted_date) ? parseInt((data?.others?.posted_date) / 3600) : ''}</span>${(data?.others?.posted_date) ? 'hrs ' : ''}<span>${(data?.others?.posted_date) ? parseInt(((data?.others?.posted_date) % 3600) / 60) : ''}</span>${(data?.others?.posted_date) ? ' min ago' : ''}</p>`;
         videoContainer.appendChild(div);
     });
-    console.log(cards);
+
 }
+
+
+document.querySelector('#sort-by-view').addEventListener('click', () => {
+    const sort = true;
+    catBtnClicked(sort, currentCategory);
+})
 
 
 loadCategory();
