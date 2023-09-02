@@ -91,6 +91,9 @@ document.querySelector('#sort-by-view').addEventListener('click', () => {
     catBtnClicked(sort, currentCategory);
 })
 
+document.querySelector('#blog').addEventListener('click', () => {
+    window.location.href = '../blog.html'
+});
 
 loadCategory();
 catBtnClicked();

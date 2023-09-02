@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phero Blog</title>
+
+    <!-- tailwind cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <main>
+        <button onclick="back()" class="back-btn btn rounded-lg text-white text-xl font-semibold bg-[#FF1F3D] mx-4 mt-4 md:mx-16 lg:mx-24 px-8 py-2">Back</button>
+        <section class="rounded-xl  shadow-lg text-center mx-4 md:mx-16 lg:mx-24 my-12 space-y-8">
+            <h1 class="text-3xl font-bold">Difference in scope between <span class="font-bold">var</span>, <span class="font-bold">let</span> and
+                <span class="font-bold">const</span>
+            </h1>
+            <section class="grid grid-cols-1 md:grid-cols-3">
+                <div class="pb-8">
+                    <p>
+                        <span class="font-bold">var</span> has two types of scope
+                    <ul>
+                        <li>1. functonal</li>
+                        <li>2. global</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="pb-8">
+                    <p>
+                        <span class="font-bold">let</span> has three types of scope
+                    <ul>
+                        <li>1. block</li>
+                        <li>2. functonal</li>
+                        <li>3. global</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="pb-8">
+                    <p>
+                        <span class="font-bold">const</span> has three types of scope
+                    <ul>
+                        <li>1. block</li>
+                        <li>2. functonal</li>
+                        <li>3. global</li>
+                    </ul>
+                    </p>
+                </div>
+            </section>
+        </section>
+        <section class="rounded-xl  shadow-lg text-center mx-4 md:mx-16 lg:mx-24 my-12 space-y-8">
+            <h1 class="text-3xl font-bold">Difference between <span class="font-bold">null</span> and <span class="font-bold">undifined</span></h1>
+            <section class="grid grid-cols-2">
+                <div class="pb-8">
+                    <p>1. <span class="font-bold">null</span> is used to represent that a variable has empty value</p>
+                    <p>2. <span class="font-bold">typeof null</span> returns object</p>
+                </div>
+                <div class="pb-8">
+                    <p>1. <span class="font-bold">undifined</span> occurs when a variable, that is not declared, is tried
+                        to print.</p>
+                    <p>2. <span class="font-bold">typeof null</span> returns undefined</p>
+                </div>
+            </section>
+        </section>
+        <section class="rounded-xl  shadow-lg text-center mx-4 md:mx-16 lg:mx-24 my-12 space-y-8">
+            <h1 class="text-3xl font-bold">REST API</h1>
+            <p class="p-8">A REST API (Representational State Transfer Application Programming Interface) is a set of rules and
+                conventions that allows different software applications to communicate with each other over the
+                internet. It defines a standardized way for requesting and exchanging data between systems. In simpler
+                terms, it is a well-defined language that computers use to talk to each other and share information.
+                With REST APIs, one can request specific pieces of data or perform actions on a remote server, making it
+                a fundamental technology for building web and mobile applications that interact with various online
+                services and databases.</p>
+        </section>
+        <button onclick="back()" class="back-btn btn rounded-lg text-white text-xl font-semibold bg-[#FF1F3D] mx-4 md:mx-16 lg:mx-24 px-8 py-2">Back</button>
+    </main>
+    <script src="./scripts/blog.js"></script>
+</body>
+
+</html>
